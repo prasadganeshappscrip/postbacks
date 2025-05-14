@@ -20,6 +20,7 @@ async def websocket_endpoint(websocket: WebSocket):
 async def test_postback(request: Request):
     data = await request.json()
     # Send message to all connected clients
+    print(data)
     for ws in connected_clients:
         await ws.send_text(f"Postback received with data: {data}")
     return {"status": "ok"}
